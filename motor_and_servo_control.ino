@@ -1,4 +1,12 @@
-
+//
+//  Creator: Connor Abens
+//  Description: 
+//               This code is meant for a 4WD robot chasis with a servo mounted ultrasonic sensor.
+//               The robot should continuously sweep the ultrasonic sensor left and right.
+//               With each sweep, the best new direction is chosen by greatest average distance.
+//               Safe distance is being checked after each reading of the ultrasonic sensor.
+//
+//----------------------------------------------------------
 #include <Servo.h> 
 #include "Timer.h"  // dont need this library as is 
  
@@ -50,8 +58,8 @@ void setup()
 //****************************  MAIN LOOP  ***********************************
 void loop()
 {
-  //t.update();
-  sweep();
+  //t.update(); // allows a function to be called every set amount of time
+  sweep(); // obstacle avoiding function
 }
 //**********************  END MAIN LOOP *****************************************
  
