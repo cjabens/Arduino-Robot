@@ -53,8 +53,10 @@ void loop()
   //t.update();
   sweep();
 }
- 
- 
+//**********************  END MAIN LOOP ***************************************** 
+
+
+//**********************  Obstacle avoiding sweep function *****************************************
 void sweep()
 {
 
@@ -64,7 +66,7 @@ void sweep()
   int recent = 0;
   
     //right to middle-right sweep
-  for (pos = 80; pos <= 110; pos += 5) { // goes from 80 degrees to 130 degrees                                     // in steps of 1 degree
+  for (pos = 80; pos <= 110; pos += 5) { // goes from 80 degrees to 130 degrees  in steps of 5 degree
     myservo.write(pos);              // tell servo to go to position in variable 'pos'
     delay(30);
     recent = getDistance();
@@ -80,7 +82,7 @@ void sweep()
   
   //middle-right to middle-left sweep
   for (pos = 110; pos <= 150; pos += 5) { // goes from 130 degrees to 180 degrees
-                                         // in steps of 1 degree
+                                         // in steps of 5 degree
     myservo.write(pos);              // tell servo to go to position in variable 'pos'
     delay(30);
     if(getDistance() <= 45)  //check safe distance
@@ -109,7 +111,7 @@ void sweep()
   avgLeft = 0;
 
 //left to middle-left sweep
-for (pos = 180; pos >= 150; pos -= 5) { // goes from 130 degrees to 80 degrees                                     // in steps of 1 degree
+for (pos = 180; pos >= 150; pos -= 5) { // goes from 130 degrees to 80 degrees  in steps of 5 degree
     myservo.write(pos);              // tell servo to go to position in variable 'pos'
     delay(30);       // waits 15ms for the servo to reach the position
     recent = getDistance();
@@ -124,7 +126,7 @@ for (pos = 180; pos >= 150; pos -= 5) { // goes from 130 degrees to 80 degrees  
 
   //middle-left to middle-right sweep
   for (pos = 150; pos >= 110; pos -= 5) { // goes from 130 degrees to 180 degrees
-                                         // in steps of 1 degree
+                                         // in steps of 5 degree
     myservo.write(pos);              // tell servo to go to position in variable 'pos'
     delay(30);
     if(getDistance() <= 45)  //check safe distance
@@ -133,7 +135,7 @@ for (pos = 180; pos >= 150; pos -= 5) { // goes from 130 degrees to 80 degrees  
 
     //right to middle-right sweep
   for (pos = 110; pos >= 80; pos -= 5) { // goes from 80 degrees to 130 degrees
-                                         // in steps of 1 degree
+                                         // in steps of 5 degree
     myservo.write(pos);              // tell servo to go to position in variable 'pos'
     delay(30);
     recent = getDistance();
@@ -148,10 +150,8 @@ for (pos = 180; pos >= 150; pos -= 5) { // goes from 130 degrees to 80 degrees  
   Serial.print("\n");
   //////////put compare function here
   compare(avgLeft,avgRight);
-
 }
-//**********************  END MAIN LOOP *****************************************
- 
+ //**********************  END sweep fucntion *****************************************
  
  
  
