@@ -1,6 +1,6 @@
 
 #include <Servo.h> 
-#include "Timer.h"
+#include "Timer.h"  // dont need this library as is 
  
  
 Timer t;
@@ -21,10 +21,10 @@ const int Fgo = 8; // go straight
 const int Rgo = 6; // turn right
 const int Lgo = 4; // turn left
 const int Bgo = 2; // go back
-const int rightDir = 5;
-const int leftDir = 6;
-const int forwardDir = 7;
-bool lastTurn = 0;
+const int rightDir = 5; // for escape direction 
+const int leftDir = 6; // for escape direction
+const int forwardDir = 7;// for escape direction
+bool lastTurn = 0; // for escape direction
 
 void setup()
 {
@@ -53,10 +53,9 @@ void loop()
   //t.update();
   sweep();
 }
-//**********************  END MAIN LOOP ***************************************** 
-
-
-//**********************  Obstacle avoiding sweep function *****************************************
+//**********************  END MAIN LOOP *****************************************
+ 
+//**********************  OBSTACLE AVOIDING SWEEP FUNCTION ***************************************** 
 void sweep()
 {
 
@@ -66,7 +65,7 @@ void sweep()
   int recent = 0;
   
     //right to middle-right sweep
-  for (pos = 80; pos <= 110; pos += 5) { // goes from 80 degrees to 130 degrees  in steps of 5 degree
+  for (pos = 80; pos <= 110; pos += 5) { // goes from 80 degrees to 130 degrees in steps of 5 degree
     myservo.write(pos);              // tell servo to go to position in variable 'pos'
     delay(30);
     recent = getDistance();
@@ -111,7 +110,7 @@ void sweep()
   avgLeft = 0;
 
 //left to middle-left sweep
-for (pos = 180; pos >= 150; pos -= 5) { // goes from 130 degrees to 80 degrees  in steps of 5 degree
+for (pos = 180; pos >= 150; pos -= 5) { // goes from 130 degrees to 80 degrees in steps of 5 degree
     myservo.write(pos);              // tell servo to go to position in variable 'pos'
     delay(30);       // waits 15ms for the servo to reach the position
     recent = getDistance();
@@ -150,8 +149,10 @@ for (pos = 180; pos >= 150; pos -= 5) { // goes from 130 degrees to 80 degrees  
   Serial.print("\n");
   //////////put compare function here
   compare(avgLeft,avgRight);
+
 }
- //**********************  END sweep fucntion *****************************************
+//**********************  END SWEEP FUNCTION *****************************************
+ 
  
  
  
@@ -315,4 +316,3 @@ void back(int d) { //go back
   analogWrite(MotorLeftPWM, iSpeed);  
   delay(d * 10);
 }
-
